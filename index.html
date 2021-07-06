@@ -4,6 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
     <link
       rel="shortcut icon"
       href="https://developers.giphy.com/branch/master/icons/icon-48x48.png?v=7f0a8f0ba9ed9e42ddba636b7ef9690c"
@@ -15,168 +26,51 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="style.css" />
     <title>GIPHY: Search</title>
   </head>
-  <style>
-    section {
-      background-color: rgb(93, 0, 243);
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    section > img {
-      object-fit: cover;
-      height: 250px;
-      width: 250px;
-      margin: 35px;
-      border-radius: 15px;
-      flex: 1 0 auto;
-      transition: box-shadow .5s cubic-bezier(0.075, 0.82, 0.165, 1);
-      /* transition: flex 0.35s cubic-bezier(0.61, -0.19, 0.35, -0.11); */
-      /* border: solid rgb(64, 65, 37) 4px; */
-    }
-
-    .hovered {
-      box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.9);
-      flex: 5;
-      cursor: pointer;
-    }
-
-    #modal-wrapper {
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      height: 100vh;
-      width: 100vw;
-      background-color: rgba(0, 0, 0, 0.678);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #modal {
-      background-color: yellow;
-      padding: 50px;
-      border: solid rgb(93, 0, 243) 20px;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #modal > a > img {
-      border-radius: 10px;
-      box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.9);
-      -webkit-box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.9);
-      transition: .5s cubic-bezier(0.075, 0.82, 0.165, 1);
-    }
-
-    #modal > a > img:hover {
-      box-shadow: 5px 5px 15px 5px #000000;
-      -webkit-box-shadow: 5px 5px 15px 5px #000000;
-    }
-
-    #modal > button {
-      align-self: flex-end;
-      color: yellow;
-      background-color: rgb(93, 0, 243);
-      border-radius: 12px;
-      padding: 10px;
-    }
-
-    .modal-inact {
-      display: none;
-      background-color: rgba(255, 255, 255, 0);
-    }
-  </style>
+  <style></style>
   <body>
-    <section id="results"></section>
+    <nav class="navbar navbar-dark fixed-top">
+      <div class="container-fluid">
+        <span class="navbar-brand">GIPHY: Search</span>
+        <form class="d-flex" onsubmit="return false">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Pizza"
+            aria-label="Search"
+          />
+          <button class="btn btn-dark" type="submit">Search</button>
+        </form>
+      </div>
+      <br /><br /><br />
+    </nav>
+
+    <i id="left" class="display-4 bi bi-arrow-left-square-fill"></i>
+    <i id="right" class="display-4 bi bi-arrow-right-square-fill"></i>
+
+    <div
+      id="container"
+      class="
+        container
+        text-white
+        d-flex
+        justify-content-center
+        align-items-center
+      "
+    >
+      <div id="placeholder">
+        <em>Your results will be displayed here...</em>
+      </div>
+    </div>
+    <section id="results" class="container"></section>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <script>
-      const section = document.querySelector("section")
-
-      fetch(
-        "http://api.giphy.com/v1/gifs/search?api_key=277rit8f5hVeRwMveLxtoKBo4wS4Vrf4&q=jazz"
-      )
-        .then((results) => results.json())
-        .then((json) => {
-          let images = json.data.map((ob) => {
-            console.log(ob)
-            const gif = document.createElement("img")
-            gif.setAttribute("src", ob.images.original.url)
-            gif.setAttribute("data-url", ob.url)
-            gif.setAttribute("data-username", ob.username)
-            gif.setAttribute("data-title", ob.title)
-            gif.setAttribute("data-image-url", ob.images.original.url)
-            if (ob.user !== undefined) {
-              gif.setAttribute("data-user-url", ob.user.profile_url)
-            }
-            section.appendChild(gif)
-          })
-
-          const gifs = document.querySelectorAll("img")
-
-          const hoverEffect = (e) => {
-            e.target.classList.add("hovered")
-          }
-          const removeEffect = (e) => {
-            e.target.classList.remove("hovered")
-          }
-
-          gifs.forEach((gif) => {
-            gif.addEventListener("mouseover", hoverEffect)
-            gif.addEventListener("mouseout", removeEffect)
-          })
-
-          const addModal = (e) => {
-            const newModal = document.createElement("div")
-            newModal.setAttribute("id", "modal-wrapper")
-            const data = e.target.dataset
-            console.log(data)
-            const url = data.url
-            const username = data.username
-            const userUrl = data.userUrl
-
-            const title = data.title
-            const imageUrl = data.imageUrl
-
-            newModal.innerHTML = `<div id="modal">
-            <h3>${title}</h3>
-            <a href="${url}" target="_blank"><img src="${imageUrl}" alt="${title}"></a>
-            <br>
-            <p> <a href="${userUrl}" target="_blank">${username}</a></p>
-            <button id='close-modal'>Close</button>
-            </div>`
-
-            section.append(newModal)
-
-            //Modal removal
-            const modal = document.querySelector("#modal")
-            const modalWrapper = document.querySelector("#modal-wrapper")
-            const closeModal = document.querySelector("#close-modal")
-            const removeModal = () => {
-              modalWrapper.remove("id", "modal-wrapper")
-            }
-            closeModal.addEventListener("click", removeModal)
-          }
-
-          console.log(gifs)
-          gifs.forEach((gif) => {
-            gif.addEventListener("click", addModal)
-          })
-        })
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
