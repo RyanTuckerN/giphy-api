@@ -1,4 +1,4 @@
-const baseUrl = "http://api.giphy.com/v1/gifs/"
+const baseUrl = "https://api.giphy.com/v1/gifs/"
 const apiKey = "277rit8f5hVeRwMveLxtoKBo4wS4Vrf4"
 const search = document.querySelector("input")
 const form = document.querySelector("form")
