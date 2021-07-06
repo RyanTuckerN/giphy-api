@@ -5,9 +5,11 @@ const form = document.querySelector("form")
 const section = document.querySelector("section")
 const forward50 = document.querySelector("#right")
 const back50 = document.querySelector("#left")
+const pageNums = document.querySelector("#page-nums")
 
 let pagination = 0
 
+pageNums.style.display = "none"
 forward50.style.display = "none"
 back50.style.display = "none"
 
@@ -45,6 +47,11 @@ const displaySearchResults = (query) => {
       hits - pagination > 50
         ? (forward50.style.display = "block")
         : (forward50.style.display = "none")
+      hits > 0
+        ? (pageNums.style.display = "block")
+        : (pageNums.style.display = "none")
+
+      pageNums.innerText = `page ${pagination/50+1} of ${Math.ceil(hits/50)}`
 
       console.log(json)
       json.data.map((ob) => {
