@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap"
       rel="stylesheet"
     />
-
+    
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
@@ -32,16 +32,19 @@
   <style></style>
   <body>
     <nav class="navbar navbar-dark fixed-top">
-      <div class="container-fluid">
-        <span class="navbar-brand">GIPHY: Search</span>
-        <span class="text-white display-9" id="page-nums">pg 1 of 4</span>
+      <div class="container-fluid d-flex">
+        <span class="navbar-brand title-font">GIPHY: Search</span>
         <form class="d-flex flex-wrap flex-sm-nowrap" onsubmit="return false">
           <input class="form-control me-2" type="search" placeholder="Pizza" aria-label="Search">
           <button class="btn btn-dark" type="submit">Search</button>
         </form>
+        <button class="btn btn-dark">Trending</button>
       </div>
-      <br /><br /><br />
+<br>
+      <div class="d-flex justify-content-center container-fluid"><span class="text-white display-9" id="page-nums">pg 1 of 4</span></div>
     </nav>
+   
+
 
     <i id="left" class="display-4 bi bi-arrow-left-square-fill"></i>
     <i id="right" class="display-4 bi bi-arrow-right-square-fill"></i>

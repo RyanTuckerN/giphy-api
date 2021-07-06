@@ -1,6 +1,7 @@
 *{
   font-family: 'Space Mono', monospace;
 }
+
 body {
   height: auto;
   width: 100vw;
@@ -30,18 +31,18 @@ nav {
   right: 3px
 }
 
+button{
+  width: 130px
+}
 
 #container {
   margin-top: 100px;
 }
 
-/* #placeholder {
-      animation-name: intro-text;
-      transition: transform 1s;
-      transition-delay: 1s;
-      transition-timing-function: cubic-bezier(1, 0, 0, 1);
-
-    } */
+#placeholder {
+position: relative;
+top: 400px;
+}
 
 .btn-dark {
   background-color: rgb(49, 0, 68);
@@ -53,7 +54,7 @@ nav {
 
 a {
   text-decoration: none;
-  color: rgb(255, 175, 255);
+  color: rgb(255, 123, 0);
 }
 
 a:hover {
@@ -61,7 +62,8 @@ a:hover {
 }
 
 h3 {
-  color: rgb(255, 175, 255);
+  color: rgb(255, 123, 0);
+
 }
 section {
   display: flex;
@@ -111,9 +113,9 @@ section > img {
 }
 
 #modal {
-  background-color: rgb(131, 1, 148);
+  background-color: rgb(255, 255, 255);
   padding: 50px;
-  border: solid rgb(29, 0, 77) 20px;
+  border: solid rgb(116, 0, 116) 20px;
   border-radius: 10px;
   display: flex;
   max-width: 100%;
