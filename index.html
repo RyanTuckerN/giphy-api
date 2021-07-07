@@ -32,7 +32,7 @@
   <style></style>
   <body>
     <nav class="navbar navbar-dark fixed-top">
-      <div class="container-fluid d-flex">
+      <div class="container-fluid d-flex navbar-contents">
         <span class="navbar-brand title-font">GIPHY: Search</span>
         <form class="d-flex flex-wrap flex-sm-nowrap" onsubmit="return false">
           <div id="input-field">
@@ -42,7 +42,7 @@
           </div>
           <button class="btn btn-dark" type="submit">Search</button>
         </form>
-        <button class="btn btn-dark">Trending</button>
+        <button class="btn btn-dark trending">Trending</button>
       </div>
 <br>
       <div class="d-flex justify-content-center container-fluid"><span class="text-white display-9" id="page-nums">pg 1 of 4</span></div>
@@ -62,7 +62,7 @@
         align-items-center
       "
     >
-      <div id="placeholder">
+      <div id="placeholder" class="text-center">
         <em>Your results will be displayed here...</em>
       </div>
     </div>

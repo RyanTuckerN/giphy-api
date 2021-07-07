@@ -12,6 +12,20 @@ body {
 nav {
   background-color: rgb(149, 45, 149);
   padding: 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+#input-field{
+  position: relative;
+  top: 6px;
+}
+
+.trending{
+  position: relative;
+  margin-bottom: 10px;
 }
 
 #left,#right{
@@ -32,16 +46,18 @@ nav {
 }
 
 button{
-  width: 130px
+  width: 130px;
+  margin: 5px;
+  height: 40px
 }
 
 #container {
-  margin-top: 100px;
+  margin-top: 20px;
 }
 
 #placeholder {
-position: relative;
-top: 400px;
+position: absolute;
+top: 30%;
 }
 
 .btn-dark {
@@ -71,6 +87,7 @@ section {
   justify-content: space-between;
   align-items: center;
   margin-top: 100px;
+  margin-bottom: 25px;
 }
 
 section > img {
@@ -192,4 +209,28 @@ section > img {
   /*when navigating through the items using the arrow keys:*/
   background-color: blueviolet !important;
   color: #ffffff;
+}
+
+@media only screen and (max-width: 800px) {
+  .navbar-contents {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  form{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .fixed-top{
+    position: relative;
+  }
+
+  #left,#right{
+    position: fixed;
+    top: 80%;
+    color: rgb(149, 45, 149);
+  }
 }
