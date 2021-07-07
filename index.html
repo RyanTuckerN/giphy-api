@@ -35,7 +35,11 @@
       <div class="container-fluid d-flex">
         <span class="navbar-brand title-font">GIPHY: Search</span>
         <form class="d-flex flex-wrap flex-sm-nowrap" onsubmit="return false">
-          <input class="form-control me-2" type="search" placeholder="Pizza" aria-label="Search">
+          <div id="input-field">
+            <input class="form-control me-2" type="search" placeholder="Pizza" aria-label="Search">
+            <ul class="suggestions">
+            </ul>
+          </div>
           <button class="btn btn-dark" type="submit">Search</button>
         </form>
         <button class="btn btn-dark">Trending</button>
@@ -44,7 +48,6 @@
       <div class="d-flex justify-content-center container-fluid"><span class="text-white display-9" id="page-nums">pg 1 of 4</span></div>
     </nav>
    
-
 
     <i id="left" class="display-4 bi bi-arrow-left-square-fill"></i>
     <i id="right" class="display-4 bi bi-arrow-right-square-fill"></i>
