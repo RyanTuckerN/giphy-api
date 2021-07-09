@@ -7,7 +7,7 @@ const resultsSection = document.querySelector("section")
 const forward50 = document.querySelector("#right")
 const back50 = document.querySelector("#left")
 const pageNums = document.querySelector("#page-nums")
-const trending = document.querySelectorAll("button")[1]
+const buttons = document.querySelectorAll("button")
 
 let pagination = 0
 
@@ -235,7 +235,7 @@ form.addEventListener("submit", () => {
   pagination = 0
   displaySearchResults(search.value)
 })
-trending.addEventListener("click", fetchTrending)
+buttons[1].addEventListener("click", fetchTrending)
 
 const autoArray = [] //store values from autocompleteArray() fetch function
 
@@ -283,8 +283,10 @@ function autocomplete(inp, arr) {
           b.innerHTML += arr[i].substr(val.length);
           b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
           b.addEventListener("click", function (e) {
+            console.log(e)
             inp.value = this.getElementsByTagName("input")[0].value;
             closeAllLists();
+            buttons[0].click()
           });
           a.appendChild(b);
       }
@@ -309,7 +311,6 @@ function autocomplete(inp, arr) {
       //and and make the current item more visible
       addActive(x);
     } else if (e.keyCode == 13) {
-      //If the ENTER key is pressed, prevent the form from being submitted
       if (currentFocus > -1) {
         if (x) x[currentFocus].click();
       }
