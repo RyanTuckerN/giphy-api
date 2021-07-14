@@ -290,7 +290,7 @@ function autocomplete(inp, arr) {
           });
           a.appendChild(b);
       }
-    },100) //.1 second
+    },300) //.1 second
     
   });
 
