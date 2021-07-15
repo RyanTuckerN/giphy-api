@@ -113,7 +113,7 @@ section > img {
 
 #modal-wrapper {
   position: fixed;
-  z-index: 1;
+  z-index: 200;
   left: 0;
   right: 0;
   top: 0;
@@ -130,6 +130,7 @@ section > img {
 
 #modal {
   background-color: rgb(255, 255, 255);
+  z-index: 200;
   padding: 50px;
   border: solid rgb(116, 0, 116) 20px;
   border-radius: 10px;
@@ -226,6 +227,7 @@ section > img {
 
   .fixed-top{
     position: relative;
+    z-index: 100;
   }
 
   #left,#right{
