@@ -1,3 +1,10 @@
+/* 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 */ 
+/* 💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩 */
+/* 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 */ 
+/* 💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩 */
+/* 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 */ 
+
+
 const baseUrl = "https://api.giphy.com/v1/gifs/"
 const apiKey = "277rit8f5hVeRwMveLxtoKBo4wS4Vrf4"
 const search = document.querySelector("input")
@@ -18,6 +25,7 @@ back50.style.display = "none"
 search.focus() 
 
 // *** *** FUNCTION TO FETCH AND DISPLAY RESULTS *** *** //
+
 const displaySearchResults = (query) => {
 
   if (!query) {
@@ -45,13 +53,7 @@ const displaySearchResults = (query) => {
     .then((json) => {
       const hits = json.pagination.total_count
       console.log(hits)
-      if(!hits){alert('No results for that search query! Try something a bit more... general')}
-
-      // results = false
-
-      // autocompleteList.innerHTML = ''
-  
-
+      if(!hits){alert('No results for that search query! Try something a bit more... general')}  
 
       !pagination
         ? (back50.style.display = "none")
@@ -137,6 +139,7 @@ const displaySearchResults = (query) => {
 const nextPage = (e) => {
   pagination += 50
   displaySearchResults(search.value)
+      // autocompleteList.innerHTML = ''
 }
 
 // *** PREV PAGE *** ///
@@ -187,6 +190,7 @@ const fetchTrending = () => {
       }
 
       gifs.forEach((gif) => {
+      // autocompleteList.innerHTML = ''
         gif.addEventListener("mouseover", hoverEffect)
         gif.addEventListener("mouseout", removeEffect)
       })
@@ -290,7 +294,7 @@ function autocomplete(inp, arr) {
           });
           a.appendChild(b);
       }
-    },300) //.1 second
+    },300) //.3 seconds
     
   });
 
